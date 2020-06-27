@@ -7,16 +7,68 @@ var car_prices = {
   car2: 2,
   car3: 3,
 };
+var first_location = {};
+var map;
+
+var geocoder = new google.maps.Geocoder();
+var directionsService = new google.maps.DirectionsService();
+var directionsRenderer = new google.maps.DirectionsRenderer();
+
 document.addEventListener("DOMContentLoaded", formHandler);
+document.addEventListener("DOMContentLoaded", tryGetLocation);
+
+function tryGetLocation() {
+  let location = document.getElementById("location");
+  location.addEventListener("click", getLocation);
+  location.click;
+  getLocation();
+}
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getPosition);
+  }
+}
+
+function getPosition(position) {
+  first_location = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude,
+  };
+  var marker = new google.maps.Marker({
+    position: first_location,
+    animation: google.maps.Animation.DROP,
+  });
+  marker.setMap(map);
+  map.setCenter(marker.getPosition());
+  getGeocodeFromLatLng();
+}
+
+function getGeocodeFromLatLng() {
+  let from_field = document.getElementById("from_field");
+  geocoder.geocode({ location: first_location }, function (results, status) {
+    if (status === "OK") {
+      if (results[0]) {
+        from_field.value = results[0].formatted_address;
+        geocodePlaceId(
+          map,
+          results[0].place_id,
+          "start",
+          directionsRenderer,
+          directionsService
+        );
+        console.log(results[0]);
+      }
+    }
+  });
+}
 
 function initMap() {
-  var directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
   var input_from = document.getElementById("from_field");
   var autocomplete1 = new google.maps.places.Autocomplete(input_from);
   var input_to = document.getElementById("to_field");
   var autocomplete2 = new google.maps.places.Autocomplete(input_to);
-  var map = document.getElementById("map");
+  map = document.getElementById("map");
 
   prevent_refresh(input_from);
   prevent_refresh(input_to);
@@ -65,11 +117,11 @@ function initMap() {
     );
   });
   var uluru = {
-    lat: lati,
-    lng: lngi,
+    lat: first_location.lat ? first_location.lat : lati,
+    lng: first_location.lng ? first_location.lng : lngi,
   };
-  var map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 6,
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 9,
     center: uluru,
   });
   directionsRenderer.setMap(map);
@@ -122,7 +174,6 @@ function geocodePlaceId(
   directionsRenderer,
   directionsService
 ) {
-  var geocoder = new google.maps.Geocoder();
   var placeId = geocoder.geocode({ placeId: placeId }, function (
     results,
     status
@@ -181,16 +232,33 @@ function submitForm(e) {
       : avertisation(valuesToComplete[i], i, "wrong");
     if (valuesToComplete[i].value) completedValues++;
   }
-  if (!selected_car) {
-    avertisation(null, 4, "wrong");
-  } else {
-    avertisation(null, 4, "right");
-  }
-  if (completedValues === 4 && selected_car) {
+  !selected_car
+    ? avertisation(null, 4, "wrong")
+    : avertisation(null, 4, "right");
+  if (
+    completedValues === 4 &&
+    selected_car &&
+    checkEmail(valuesToComplete[1].value, valuesToComplete[1])
+  ) {
     var price = calcPrice();
     modal.style.display = "block";
     modal_text.innerText = `Multumim pentru comanda domnule/doamna ${valuesToComplete[0].value}. Pretul d-voastra este ${price}`;
   }
+}
+
+function checkEmail(email, element) {
+  const error_email = document.getElementById("email_adv");
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!re.test(String(email).toLowerCase())) {
+    element.style.border = "solid 2px red";
+    error_email.innerText = "Introdu un email valid";
+    error_email.style.display = "block";
+  } else {
+    element.style.border = "1px solid #D8B4A0";
+    error_email.style.display = "none";
+    error_email.innerHTML = "Introdu email-ul";
+  }
+  return re.test(String(email).toLowerCase());
 }
 
 function calcPrice() {
