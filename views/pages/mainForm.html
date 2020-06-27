@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Car Reservation</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Aplicatie web destinata rezervarii de masini"
+    />
+    <link rel="stylesheet" href="./styles/common_style.css" />
+    <script src="./scripts/autocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkiGv2h1IOQCgr2R-S48Gb8jjbxg55v8w&libraries=places"></script>
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <body>
+    <div class="main_container">
+        <div class="left_container">
+            <div class="info_panel">
+                <p class="info_text" id="duration">Duration:</p>
+                <p class="info_text" id="distance">Distance:</p>
+            </div>
+            <div id="map" latitude="45.9442858" longitude="25.0094303">
+                <script src="./scripts/map_script.js"></script>
+                <script src="./scripts/call_map.js"></script>
+            </div>
+        </div>
+        <div class="right_container">
+            <h2 class="form_title"> Reserve a car</h2>
+            <form class="reservation_form">
+                <div class="name_field">
+                    <label for="name" class="text_input_label">Name:</label>
+                    <input id="name" type="text" class="text_input" name="name" placeholder="Please enter your name">  
+                    <p id = "name_adv" class="avertisment">Please enter your name!</p>
+                </div> 
+                <div class="email_field">
+                    <label for="email" class="text_input_label">Email:</label>
+                    <input id="email" type="email" class="text_input" placeholder="Please enter your email" name="email">
+                    <p id = "email_adv" class="avertisment">Please enter your email!</p>
+                </div>
+                <div class="from_field">
+                    <label for="from" class="text_input_label">From:</label>
+                    <input id="from_field" type="text" class="text_input" placeholder="Please enter your location" name="from">
+                    <p id = "from_adv" class="avertisment">Please enter your start location!</p>
+                </div>
+                <div class="to_field">
+                    <label for="to" class="text_input_label">To:</label>
+                    <input id="to_field" type="text" class="text_input" placeholder="Please enter your destination" name="from">
+                    <p id = "to_adv" class="avertisment">Please enter your destination!</p>
+                </div>
+                <div class="car_type">
+                    <label for="select_car" class="car_select_label">Select a car:</label>
+                    <div>
+                        <h3>Car type 1</h3>
+                        <button value= "car1" id = "car1" class="car_button"><img id="car1_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
+                    </div>
+                    <div>
+                            <h3>Car type 2</h3>
+                            <button value = "car2" id= "car2" class="car_button"><img id="car2_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
+                    </div>
+                    <div>
+                        <h3>Car type 3</h3>
+                        <button value = "car3" id = "car3" class="car_button"><img id="car3_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
+                    </div>
+                </div>
+                <p id = "car_adv" class="avertisment">Please select a car!</p>
+                <button id="submit" class="submit_button" onSubmit="return false;" type="submit">Calculate the price</button>
+            </form>
+            <div class="modal" id="modal">
+                <div class="modal_content">
+                    <span id="close" class="close">&times;</span>
+                    <p id="modal_text" class="modal_text"></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "reservation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StativaCamelia/Reservation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StativaCamelia/Reservation/issues"
+  },
+  "homepage": "https://github.com/StativaCamelia/Reservation#readme",
+  "dependencies": {
+    "mz": "^2.7.0",
+    "nodemon": "^2.0.4"
+  }
+}
