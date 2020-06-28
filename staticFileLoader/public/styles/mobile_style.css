@@ -6,6 +6,7 @@
     {background-image: url("https://i0.wp.com/www.nasco-tours.com/wp-content/uploads/2017/11/transportation-background.jpg");}
     .main_container {
         margin-top: 10vh;
+        border-radius: 5%;
         display: flex;
         flex-direction: column;
         height: auto;
@@ -42,6 +43,7 @@
         border-radius: 5%;
         justify-content: space-evenly;
         margin: 1vh 0vw;
+        background-color: white;
       }
     
     
@@ -118,19 +120,56 @@
         border-radius: 2%;
       }
     
-      .submit_button{
-        border:solid 5px #D8B4A0;
-        border-radius: 5%;
-        width: fit-content;
-        height: 7vh;
-        font-weight: bold;
-        font-size: large;
-        align-self: center;
+      .submit_button {
+        width: 13rem;
+        height: 4rem;
+        font-size: 12px;
         text-align: center;
-        padding: 12px 20px;
-        padding-bottom: 40px;
-        margin: 5vh;
-      }
+        font-family: sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        transition: 0.3s;
+        align-self: center;
+        margin: 3rem;
+    }
+    
+    .submit_button::before,
+    .submit_button::after {
+        content: '';
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        top: 0;
+        left: 0;
+        transition: 0.3s;
+    }
+    
+    .submit_button::before {
+        background-color: white;
+        z-index: -1;
+        box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    }
+    
+    .submit_button::after {
+        background-color: #D8B4A0;
+        transform: translate(1rem, 1rem);
+        z-index: -2;
+    }
+    
+    .submit_button:hover {
+        transform: translate(1rem, 1rem);
+        color: white;
+    }
+    
+    .submit_button:hover::before {
+        background-color: #D8B4A0;
+    }
+    
+    .submit_button:hover::after {
+        background-color: white;
+        transform: translate(-1rem, -1rem);
+    }
     
       .info_panel{
         position:relative;

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/common_style.css" />
     <link rel="stylesheet" href="./styles/desktop_style.css" />
     <link rel="stylesheet" href="./styles/mobile_style.css" />
-    <script src="./scripts/autocomplete.js"></script>
+    <script src="./scripts/change_lang.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkiGv2h1IOQCgr2R-S48Gb8jjbxg55v8w&libraries=places"></script>
     <meta name="viewport" content="width=device-width" />
   </head>
@@ -30,53 +30,58 @@
             <h2 class="form_title"> Reserva o masina</h2>
             <form class="reservation_form">
                 <div class="tooltip">
+                    <img id="english" class="help_icon" src="./images/english.png" alt="help icon"/>
+                    <img id="romania" class="help_icon" src="./images/romanian.png" alt="help icon"/>
                     <img id="help" class="help_icon" src="./images/help.png" alt="help icon"/>
-                    <span class="tooltiptext">Tot ce trebuie sa faci este sa introduci un nume, un email, locatia de ponire si destinatia si sa alegi o masina!</span>
+                    
+                    <span id = "tip" class="tooltiptext">Tot ce trebuie sa faci este sa introduci un nume, un email, locatia de pornire si destinatia si sa alegi o masina!</span>
                 </div>
+                <h3 id="client">Detalii client</h3>
                 <div id="input_box" class="name_field">
-                    <label for="name" class="text_input_label">Nume:</label>
+                    <label id="nume_l" for="name" class="text_input_label">Nume:</label>
                     <input id="name" type="text" class="text_input" name="name" placeholder="Introdu numele">  
                     <p id = "name_adv" class="avertisment">Introdu numele</p>
                 </div> 
                 <div id="input_box" class="email_field">
-                    <label for="email" class="text_input_label">Email:</label>
+                    <label id="email_l" for="email" class="text_input_label">Email:</label>
                     <input id="email" type="email" class="text_input" placeholder="Introdu email-ul" name="email">
                     <p id = "email_adv" class="avertisment">Introdu email-ul</p>
                 </div>
+                <h3 id="route">Detalii traseu</h3>
                 <div id="input_box" class="from_field">
-                    <label for="from" class="text_input_label">De la:</label>
+                    <label id="from_l" for="from" class="text_input_label">De la:</label>
                     <input id="from_field" type="text" class="text_input" placeholder="Introdu adresa de start" name="from">
-                    <p id = "from_adv" class="avertisment">Introdu adresa de start!</p>
+                    <p id = "from_adv" class="avertisment">Introdu adresa de start</p>
                 </div>
                 <div id="input_box" class="to_field">
-                    <label for="to" class="text_input_label">Pana la:</label>
+                    <label id="to_l" for="to" class="text_input_label">Pana la:</label>
                     <input id="to_field" type="text" class="text_input" placeholder="Introdu destinatia" name="from">
                     <p id = "to_adv" class="avertisment">Introdu destinatia</p>
                 </div>
                 <div class="car_type">
-                    <label for="select_car" class="car_select_label">Selecteaza masina:</label>
+                    <label id="car_l" for="select_car" class="car_select_label">Selecteaza masina:</label>
                     <div>
-                        <h3>Masina 1</h3>
+                        <h3 id = "car1_text">Masina 1</h3>
                         <button value= "car1" id = "car1" class="car_button"><img id="car1_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                     <div>
-                            <h3>Masina 2</h3>
-                            <button value = "car2" id= "car2" class="car_button"><img id="car2_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
+                        <h3 id = "car2_text">Masina 2</h3>
+                        <button value = "car2" id= "car2" class="car_button"><img id="car2_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                     <div>
-                        <h3>Masina 3</h3>
+                        <h3 id="car3_text">Masina 3</h3>
                         <button value = "car3" id = "car3" class="car_button"><img id="car3_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                 </div>
-                <p id = "car_adv" class="avertisment">Please select a car!</p>
-                <button id="submit" class="submit_button" onSubmit="return false;" type="submit">Calculate the price</button>
+                <p id = "car_adv" class="avertisment">Selecteaza o masina!</p>
+                <button id="submit" class="submit_button" onSubmit="return false;" type="submit">Calculeaza pretul</button>
             </form>
             <div class="modal" id="modal">
                 <div class="modal_content">
                     <img id="car_doodle" src="./images/car_doodle.png"/>
                     <div class="modal_text_content">
                     <span id="close" class="close">&times;</span>
-                    <h1 class="modal_title">Rezervarea a fost plasata!</h1>
+                    <h1 id = "title" class="modal_title">Rezervarea a fost plasata!</h1>
                     <p id="modal_text" class="modal_text"></p>
                     </div>
                 </div>
