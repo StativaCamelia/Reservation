@@ -57,7 +57,6 @@ function getGeocodeFromLatLng() {
           directionsRenderer,
           directionsService
         );
-        console.log(results[0]);
       }
     }
   });
@@ -160,7 +159,10 @@ function getDirections(directionsRenderer, directionsService) {
           );
           directionsRenderer.setDirections(response);
         } else {
-          window.alert("We can get your informations because: " + status);
+          status === "ZERO_RESULTS"
+            ? (status = "Nu exista rute disponibile intre cele dou locatii")
+            : (status = status);
+          window.alert(status);
         }
       }
     );
@@ -194,8 +196,8 @@ function geocodePlaceId(
 function setDurationAndDistance(durantion, distance, distanceNumber) {
   const duration_field = document.getElementById("duration");
   const distance_field = document.getElementById("distance");
-  duration_field.innerText += durantion;
-  distance_field.innerText += distance;
+  duration_field.innerText = `Duration: ${durantion}`;
+  distance_field.innerText = `Distance: ${distance}`;
   return distanceNumber;
 }
 
@@ -209,6 +211,9 @@ function closeModal() {
   let closeModal = document.getElementById("close");
   let modal = document.getElementById("modal");
   closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+  window.addEventListener("scroll", function () {
     modal.style.display = "none";
   });
 }
@@ -241,8 +246,10 @@ function submitForm(e) {
     checkEmail(valuesToComplete[1].value, valuesToComplete[1])
   ) {
     var price = calcPrice();
-    modal.style.display = "block";
-    modal_text.innerText = `Multumim pentru comanda domnule/doamna ${valuesToComplete[0].value}. Pretul d-voastra este ${price}`;
+    if (price > 0) {
+      modal_text.innerText = `Multumim pentru comanda domnule/doamna ${valuesToComplete[0].value}. Pretul d-voastra este ${price}`;
+      modal.style.display = "block";
+    }
   }
 }
 

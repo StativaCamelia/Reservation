@@ -29,22 +29,26 @@
         <div class="right_container">
             <h2 class="form_title"> Reserva o masina</h2>
             <form class="reservation_form">
-                <div class="name_field">
+                <div class="tooltip">
+                    <img id="help" class="help_icon" src="./images/help.png" alt="help icon"/>
+                    <span class="tooltiptext">Tot ce trebuie sa faci este sa introduci un nume, un email, locatia de ponire si destinatia si sa alegi o masina!</span>
+                </div>
+                <div id="input_box" class="name_field">
                     <label for="name" class="text_input_label">Nume:</label>
                     <input id="name" type="text" class="text_input" name="name" placeholder="Introdu numele">  
                     <p id = "name_adv" class="avertisment">Introdu numele</p>
                 </div> 
-                <div class="email_field">
+                <div id="input_box" class="email_field">
                     <label for="email" class="text_input_label">Email:</label>
                     <input id="email" type="email" class="text_input" placeholder="Introdu email-ul" name="email">
                     <p id = "email_adv" class="avertisment">Introdu email-ul</p>
                 </div>
-                <div class="from_field">
+                <div id="input_box" class="from_field">
                     <label for="from" class="text_input_label">De la:</label>
                     <input id="from_field" type="text" class="text_input" placeholder="Introdu adresa de start" name="from">
                     <p id = "from_adv" class="avertisment">Introdu adresa de start!</p>
                 </div>
-                <div class="to_field">
+                <div id="input_box" class="to_field">
                     <label for="to" class="text_input_label">Pana la:</label>
                     <input id="to_field" type="text" class="text_input" placeholder="Introdu destinatia" name="from">
                     <p id = "to_adv" class="avertisment">Introdu destinatia</p>
@@ -69,8 +73,12 @@
             </form>
             <div class="modal" id="modal">
                 <div class="modal_content">
+                    <img id="car_doodle" src="./images/car_doodle.png"/>
+                    <div class="modal_text_content">
                     <span id="close" class="close">&times;</span>
+                    <h1 class="modal_title">Rezervarea a fost plasata!</h1>
                     <p id="modal_text" class="modal_text"></p>
+                    </div>
                 </div>
             </div>
             <button id="location" style="display: none;">Get Location</button>
