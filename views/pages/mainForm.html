@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles/desktop_style.css" />
     <link rel="stylesheet" href="./styles/mobile_style.css" />
     <script src="./scripts/change_lang.js"></script>
+    <script src="./scripts/change_theme.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkiGv2h1IOQCgr2R-S48Gb8jjbxg55v8w&libraries=places"></script>
     <meta name="viewport" content="width=device-width" />
   </head>
@@ -18,8 +19,8 @@
     <div class="main_container">
         <div class="left_container">
             <div class="info_panel">
-                <p class="info_text" id="duration">Duration:</p>
-                <p class="info_text" id="distance">Distance:</p>
+                <p class="info_text" id="duration">Durata:</p>
+                <p class="info_text" id="distance">Distanta:</p>
             </div>
             <div id="map" latitude="45.9442858" longitude="25.0094303">
                 <script src="./scripts/map_script.js"></script>
@@ -27,7 +28,7 @@
             </div>
         </div>
         <div class="right_container">
-            <h2 class="form_title"> Reserva o masina</h2>
+            <h2 id="main_title" class="form_title"> Reserva o masina <img id= 'bulb' src ="./images/black_bulb.png" alt="black bulb"/></h2>
             <form class="reservation_form">
                 <div class="tooltip">
                     <img id="english" class="help_icon" src="./images/english.png" alt="help icon"/>
@@ -61,15 +62,15 @@
                 <div class="car_type">
                     <label id="car_l" for="select_car" class="car_select_label">Selecteaza masina:</label>
                     <div>
-                        <h3 id = "car1_text">Masina 1</h3>
+                        <h3 id = "car1_text" class = "car_text">Masina 1</h3>
                         <button value= "car1" id = "car1" class="car_button"><img id="car1_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                     <div>
-                        <h3 id = "car2_text">Masina 2</h3>
+                        <h3 id = "car2_text" class = "car_text">Masina 2</h3>
                         <button value = "car2" id= "car2" class="car_button"><img id="car2_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                     <div>
-                        <h3 id="car3_text">Masina 3</h3>
+                        <h3 id="car3_text" class = "car_text">Masina 3</h3>
                         <button value = "car3" id = "car3" class="car_button"><img id="car3_img" class="car_icon" src="./images/car_icon.png" alt="car icon"/></button>
                     </div>
                 </div>

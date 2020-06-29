@@ -1,7 +1,7 @@
 /*VARIANTA PENTRU DESKTOP*/
 @media only screen and (min-width: 800px) {
     body
-    {background-image: url("https://i0.wp.com/www.nasco-tours.com/wp-content/uploads/2017/11/transportation-background.jpg");}
+    {background-image: url("http://wallpapercrafter.com/uploads/posts/53675-___red-light-rush-hour-traffic-and-day-hd.jpg");}
     .main_container {
       background-color: white;
       border-radius: 5%;
@@ -32,6 +32,7 @@
         height: 80%;
         margin: 0px;
         border-radius: 5%;
+        padding: 20px;
       }
     
       .right_container {
@@ -215,7 +216,7 @@
     }
     
       .info_panel{
-        background-color: white;
+
         position: relative;
         width: 100%;
         text-align: center;
@@ -286,6 +287,12 @@
           margin-bottom: 2rem;
           text-transform: uppercase;
           color: #0A0A0A;
+      }
+
+      #bulb{
+        width: 1.5vw;
+        height: 1.5vw;
+        margin-left: 50%;
       }
 
   }

@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const english = document.getElementById("english");
   english.addEventListener("click", change_en);
 
+  let durata = document.getElementById("duration");
+  let distanta = document.getElementById("distance");
+
+  let main_title = document.getElementById("main_title");
+
   let client = document.getElementById("client");
   let route = document.getElementById("route");
 
@@ -33,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let title = document.getElementById("title");
 
   function change_ro() {
+    durata.innerText = "Durata:";
+    distance.innerText = "Distanta:";
+    main_title.innerText = "Rezerva o masina";
+
     client.innerText = "Detalii client";
     route.innerHTML = "Detalii traseu";
     tip.innerText =
@@ -64,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function change_en() {
+    durata.innerText = "Duration:";
+    distanta.innerText = "Distance:";
+    main_title.innerText = "Reserve a car";
     client.innerText = "Client info";
     route.innerHTML = "Client route";
     tip.innerText =
