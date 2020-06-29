@@ -39,11 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function change_ro() {
     durata.innerText = "Durata:";
-    distance.innerText = "Distanta:";
-    main_title.innerText = "Rezerva o masina";
+    distanta.innerText = "Distanta:";
+    main_title.innerHtml =
+      "Rezerva o masina" +
+      "<img id= 'bulb' src ='./images/black_bulb.png' alt='black bulb'/>";
 
     client.innerText = "Detalii client";
-    route.innerHTML = "Detalii traseu";
+    route.innerText = "Detalii traseu";
     tip.innerText =
       "Tot ce trebuie sa faci este sa introduci un nume, un email, locatia de ponire si destinatia si sa alegi o masina!";
     label_nume.innerText = "Nume:";
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     label_email.innerText = "Email:";
     email.placeholder = "Introdu email";
-    email_adv.innerHTML = "Introdu email";
+    email_adv.innerText = "Introdu email";
 
     from_l.innerText = "De la:";
     from.placeholder = "Introdu adresa de start";
@@ -75,9 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function change_en() {
     durata.innerText = "Duration:";
     distanta.innerText = "Distance:";
-    main_title.innerText = "Reserve a car";
+    main_title.innerHtml =
+      "Reserve a car" +
+      "<img id= 'bulb' src ='./images/black_bulb.png' alt='black bulb'/>";
     client.innerText = "Client info";
-    route.innerHTML = "Client route";
+    route.innerText = "Client route";
     tip.innerText =
       "Enter your name, email, your start location and your end location and choose a car!";
     label_nume.innerText = "Name:";
@@ -86,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     label_email.innerText = "Email:";
     email.placeholder = "Enter your email";
-    email_adv.innerHTML = "Enter your email";
+    email_adv.innerText = "Enter your email";
 
     from_l.innerText = "From:";
     from.placeholder = "Enter your start adress";
